@@ -1,0 +1,52 @@
+<div id="football-section" style="font-family: Arial, sans-serif; margin: 20px;">
+  <h2 style="text-align:center;">⚽ Latest Football Results</h2>
+  <div id="results" style="display: grid; gap: 15px;"></div>
+
+  <h2 style="text-align:center; margin-top:30px;">📅 Upcoming Fixtures</h2>
+  <div id="fixtures" style="display: grid; gap: 15px;"></div>
+</div>
+
+<script>
+const results = [
+  { home: "Arsenal", away: "Chelsea", score: "2 - 1", location: "Emirates Stadium" },
+  { home: "Barcelona", away: "Real Madrid", score: "3 - 0", location: "Camp Nou" }
+];
+
+const fixtures = [
+  { home: "Man City", away: "Liverpool", date: "Aug 20, 2025", location: "Etihad Stadium" },
+  { home: "PSG", away: "Bayern", date: "Aug 22, 2025", location: "Parc des Princes" }
+];
+
+function createCard(content) {
+  const card = document.createElement("div");
+  card.style.padding = "15px";
+  card.style.borderRadius = "12px";
+  card.style.boxShadow = "0 4px 8px rgba(0,0,0,0.1)";
+  card.style.background = "#f9f9f9";
+  card.style.fontSize = "16px";
+  card.style.textAlign = "center";
+  card.innerHTML = content;
+  return card;
+}
+
+function renderResults() {
+  const container = document.getElementById("results");
+  results.forEach(r => {
+    const content = `<strong>${r.home}</strong> ${r.score} <strong>${r.away}</strong><br>
+                     <small>${r.location}</small>`;
+    container.appendChild(createCard(content));
+  });
+}
+
+function renderFixtures() {
+  const container = document.getElementById("fixtures");
+  fixtures.forEach(f => {
+    const content = `<strong>${f.home}</strong> vs <strong>${f.away}</strong><br>
+                     <small>${f.date} • ${f.location}</small>`;
+    container.appendChild(createCard(content));
+  });
+}
+
+renderResults();
+renderFixtures();
+</script>
